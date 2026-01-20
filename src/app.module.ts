@@ -5,7 +5,6 @@ import { AuthController } from './auth/auth.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UsersModule } from './users/users.module';
 import { ConfigModule } from '@nestjs/config';
-import { UserController } from './user/user.controller';
 
 @Module({
   imports: [ConfigModule.forRoot(), TypeOrmModule.forRoot({
