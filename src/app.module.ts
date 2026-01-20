@@ -3,19 +3,22 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { AuthController } from './auth/auth.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { UsersModule } from './users/users.module';
+import { ConfigModule } from '@nestjs/config';
+import { UserController } from './user/user.controller';
 
 @Module({
-  imports: [TypeOrmModule.forRoot({
+  imports: [ConfigModule.forRoot(), TypeOrmModule.forRoot({
     type: 'postgres',
-    host: 'localhost',
+    host: process.env.DB_HOST,
     port: 5432,
-    username: process.env.DB_USER,
+    username: process.env.DB_USERNAME,
     password: process.env.DB_PASSWORD,
-    database: process.env.DB_NAME,
+    database: process.env.DB_DATABASE,
     autoLoadEntities: true,
     synchronize: true,
-  })],
-  controllers: [AppController, AuthController],
+  }), UsersModule],
+  controllers: [AppController, AuthController, UserController],
   providers: [AppService],
 })
 export class AppModule {}
