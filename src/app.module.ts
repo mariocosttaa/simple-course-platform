@@ -17,7 +17,7 @@ import { ConfigModule } from '@nestjs/config';
     autoLoadEntities: true,
     synchronize: true,
   }), UsersModule],
-  controllers: [AppController, AuthController, UserController],
+  controllers: [AppController, AuthController],
   providers: [AppService],
 })
 export class AppModule {}
